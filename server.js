@@ -1,11 +1,11 @@
 'use strict';
-// === LÍNEA OBLIGATORIA PARA FCC ===
+// === LÍNEA 1 OBLIGATORIA ===
 const fccTesting = require('./freeCodeCamp/fcctesting.js');
 
 const express = require('express');
 const app = express();
 
-// === LÍNEA OBLIGATORIA PARA FCC ===
+// === LÍNEA 2 OBLIGATORIA ===
 fccTesting(app);
 
 // Configurar Pug
