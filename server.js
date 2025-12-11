@@ -1,20 +1,17 @@
 'use strict';
+require('dotenv').config();
 const express = require('express');
-const app = express();
-
-/****************************************************
- *  FREE CODE CAMP TESTS - DO NOT EDIT OR REMOVE   *
- ***************************************************/
-
+const myDB = require('./connection');
 const fccTesting = require('./freeCodeCamp/fcctesting.js');
-fccTesting(app);
 
-/****************************************************
- *  SETUP                                           *
- ***************************************************/
+const app = express();
 
 app.set('view engine', 'pug');
 app.set('views', './views/pug');
+fccTesting(app); // For fCC testing purposes
+app.use('/public', express.static(process.cwd() + '/public'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.route('/').get((req, res) => {
   res.render('index');
@@ -22,5 +19,5 @@ app.route('/').get((req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log('Listening on port ' + PORT);
+  console.log(`Listening on port ${PORT}`);
 });
