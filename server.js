@@ -13,11 +13,10 @@ app.use('/public', express.static(process.cwd() + '/public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.route("/logout").get((req, res) => {
-    req.logout(() => {
-        res.redirect("/");
-    });
+app.route('/').get((req, res) => {
+  res.render('index');
 });
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
