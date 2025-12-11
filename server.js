@@ -1,24 +1,26 @@
 'use strict';
-// === LÍNEA 1 OBLIGATORIA ===
-const fccTesting = require('./freeCodeCamp/fcctesting.js');
-
 const express = require('express');
 const app = express();
 
-// === LÍNEA 2 OBLIGATORIA ===
+/****************************************************
+ *  FREE CODE CAMP TESTS - DO NOT EDIT OR REMOVE   *
+ ***************************************************/
+
+const fccTesting = require('./freeCodeCamp/fcctesting.js');
 fccTesting(app);
 
-// Configurar Pug
+/****************************************************
+ *  SETUP                                           *
+ ***************************************************/
+
 app.set('view engine', 'pug');
 app.set('views', './views/pug');
 
-// Ruta PRINCIPAL
-app.get('/', (req, res) => {
+app.route('/').get((req, res) => {
   res.render('index');
 });
 
-// Escuchar
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log('Server running on port ' + PORT);
+  console.log('Listening on port ' + PORT);
 });
